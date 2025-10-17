@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:47:27.198886",
+  "raw_log_context": "2025/10/14 17:12:09 [error] 35#35: *29 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"DELETE /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:09 [error] 35#35: *32 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:10 [error] 35#35: *35 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:10 [error] 35#35: *38 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到上游服务，导致API请求失败\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查上游服务192.168.250.7:8080是否正常运行\",\n    \"验证网络连通性（防火墙、路由、端口访问）\",\n    \"检查上游服务配置（Nginx upstream配置）\",\n    \"确认上游服务监听地址和端口是否正确\",\n    \"检查上游服务资源状态（CPU、内存、进程数）\",\n    \"查看上游服务自身日志是否存在异常\"\n  ],\n  \"solution\": {\n    \"immediate\": \"重启上游服务，检查服务状态并临时恢复访问；若服务不可用，启动备份实例或切换负载均衡节点\",\n    \"long_term\": \"完善服务健康检查机制，配置自动重启策略，实施监控告警，优化网络架构确保高可用\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:47:27.198860"
+  }
+}

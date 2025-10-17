@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-10-17T09:50:35.395910",
+  "raw_log_context": "2025/10/14 17:11:48 [error] 35#35: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:53 [error] 34#34: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"",
+  "analysis": {
+    "summary": "Nginx代理无法连接到上游服务192.168.250.7:8080，导致API请求失败",
+    "severity": "高",
+    "diagnosis_path": [
+      "检查上游服务是否正常运行（进程状态、端口监听）",
+      "验证网络连通性（防火墙规则、路由配置）",
+      "检查Nginx upstream配置是否正确",
+      "确认服务依赖项（如数据库、中间件）是否可用",
+      "查看应用日志排查服务启动异常"
+    ],
+    "solution": {
+      "immediate": "重启上游服务并验证健康检查接口可访问，临时调整Nginx将流量转发到备用节点",
+      "long_term": "完善服务健康监测机制，部署负载均衡和自动故障转移，优化应用启动脚本确保依赖项就绪，配置连接超时和重试策略"
+    },
+    "timestamp": "2025-10-17T09:50:35.395897"
+  }
+}

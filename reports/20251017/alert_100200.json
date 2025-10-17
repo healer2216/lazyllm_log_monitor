@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-10-17T10:02:00.220592",
+  "raw_log_context": "2025/10/14 17:12:10 [error] 35#35: *38 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:10 [error] 35#35: *38 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/17 09:12:10 [error] 35#35: *38 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/17 09:12:10 [error] 35#35: *38 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "Nginx代理无法连接到上游服务器192.168.250.7:8080，导致API请求失败",
+    "severity": "高",
+    "diagnosis_path": [
+      "检查上游服务器192.168.250.7:8080的服务状态和端口监听情况",
+      "验证网络连通性（防火墙规则、路由设置）",
+      "检查Nginx upstream配置是否正确",
+      "确认后端应用是否正常启动且无端口冲突",
+      "检查服务器资源（CPU、内存、磁盘）是否充足",
+      "查看后端应用日志排查启动异常"
+    ],
+    "solution": {
+      "immediate": "重启上游服务器上的应用服务，检查防火墙规则临时开放8080端口，在Nginx配置中设置合理的proxy_connect_timeout",
+      "long_term": "完善服务健康检查机制，部署负载均衡和高可用架构，实施监控告警系统，建立自动化故障恢复流程"
+    },
+    "timestamp": "2025-10-17T10:02:00.220579"
+  }
+}

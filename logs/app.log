@@ -1,0 +1,5 @@
+[INFO] Service started at 2025-04-05T10:00:00
+[ERROR] NullPointerException at UserService.java:45
+java.lang.NullPointerException
+    at com.example.UserService.getUser(UserService.java:45)
+    at com.example.Controller.handleRequest(Controller.java:20)

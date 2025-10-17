@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:43:19.744537",
+  "raw_log_context": "2025/10/14 17:11:48 [error] 35#35: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:53 [error] 34#34: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:58 [error] 36#36: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:12:02 [error] 38#38: *12 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到上游服务192.168.250.7:8080，导致所有API请求失败\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查上游服务(192.168.250.7:8080)是否正常运行\",\n    \"验证网络连通性(telnet/nc测试端口可达性)\",\n    \"检查防火墙规则和网络安全组配置\",\n    \"确认上游服务监听地址和端口配置\",\n    \"检查应用健康检查端点(/api/health)是否正常响应\",\n    \"查看上游服务自身日志排查启动问题\"\n  ],\n  \"solution\": {\n    \"immediate\": \"重启上游服务进程，检查服务状态并临时恢复业务访问\",\n    \"long_term\": \"完善服务监控告警机制，实现服务自动重启；优化健康检查配置；建立服务依赖关系图和故障切换方案\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:43:19.744523"
+  }
+}

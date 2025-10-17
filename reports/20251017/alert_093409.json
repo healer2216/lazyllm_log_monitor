@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:34:09.802123",
+  "raw_log_context": "2025/10/14 17:11:48 [error] 35#35: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到上游服务192.168.250.7:8080，连接被拒绝\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查上游服务192.168.250.7:8080是否正常运行\",\n    \"验证网络连通性（防火墙规则、路由设置）\",\n    \"检查上游服务端口监听状态（netstat/ss命令）\",\n    \"确认Nginx upstream配置是否正确\",\n    \"检查上游服务日志是否有启动失败或崩溃记录\"\n  ],\n  \"solution\": {\n    \"immediate\": \"重启上游服务并验证健康检查接口可访问性，临时调整Nginx配置将流量切换到备用节点\",\n    \"long_term\": \"实施服务健康监测和自动重启机制，完善监控告警系统，优化网络ACL策略\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:34:09.802109"
+  }
+}

@@ -1,0 +1,29 @@
+# config.yaml
+logs:
+  - path: ./logs/app.log
+    keywords: ["ERROR", "Exception", "Traceback", "failed"]
+
+llm:
+#  model_name: internlm2-chat   # 支持 qwen, chatglm 等
+  model_name: DeepSeek-V3-1
+  timeout: 90
+  max_retries: 2
+
+email:
+  enable: true
+  smtp_server: "smtp.qq.com"
+  port: 465
+  username: "2609789588@qq.com"
+  password: "vybxzmctrnxaebed"  # 推荐使用应用专用密码
+  recipients:
+    - "256006102023@hainanu.edu.cn"
+  sender_name: "LogMonitor AI"
+
+context_lines:
+  before: 3
+  after: 3
+
+output_dir: "./reports"
+
+# 可选：去重窗口（秒），避免重复告警
+dedup_window_seconds: 300

@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:36:34.353099",
+  "raw_log_context": "2025/10/14 17:11:53 [error] 34#34: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:58 [error] 36#36: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:12:02 [error] 38#38: *12 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 39#39: *15 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到上游服务器192.168.250.7:8080，导致API请求失败\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\"检查上游服务状态（是否运行/监听端口）\", \"验证网络连通性（防火墙/路由设置）\", \"检查Nginx upstream配置（地址/端口是否正确）\", \"查看应用日志（服务崩溃或启动失败）\", \"检查资源使用情况（CPU/内存/端口占用）\"],\n  \"solution\": {\n    \"immediate\": \"重启上游服务并验证监听端口；临时调整Nginx超时设置或启用备份上游节点\",\n    \"long_term\": \"完善服务健康检查机制；部署负载均衡与自动故障转移；加强监控告警（如Prometheus+Alertmanager）\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:36:34.353080"
+  }
+}

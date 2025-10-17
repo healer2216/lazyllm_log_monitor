@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-10-17T10:00:47.524944",
+  "raw_log_context": "2025/10/14 17:12:03 [error] 39#39: *15 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 40#40: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:04 [error] 35#35: *24 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:12:09 [error] 35#35: *29 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"DELETE /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "上游服务192.168.250.7:8080连接被拒绝，导致API请求失败",
+    "severity": "高",
+    "diagnosis_path": [
+      "检查上游服务(192.168.250.7:8080)进程状态和端口监听状态",
+      "验证网络连通性(telnet/nc测试端口可达性)",
+      "检查防火墙规则和网络安全组配置",
+      "确认上游服务健康检查端点(/api/health)返回状态",
+      "查看上游服务自身日志排查启动异常",
+      "检查负载均衡配置和服务发现机制"
+    ],
+    "solution": {
+      "immediate": "1. 重启上游服务进程 2. 临时调整nginx配置将流量切换到备用节点 3. 检查并修复服务健康检查机制",
+      "long_term": "1. 实现服务高可用架构 2. 完善监控告警体系 3. 建立自动化故障转移机制 4. 优化服务健康检查和自愈能力"
+    },
+    "timestamp": "2025-10-17T10:00:47.524931"
+  }
+}

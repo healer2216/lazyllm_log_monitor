@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:35:23.113748",
+  "raw_log_context": "2025/10/14 17:11:48 [error] 35#35: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:53 [error] 34#34: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:11:58 [error] 36#36: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到上游服务192.168.250.7:8080，持续返回连接拒绝错误\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查上游服务(192.168.250.7:8080)是否正常运行\",\n    \"验证网络连通性：使用ping/telnet测试到192.168.250.7的网络和端口可达性\",\n    \"检查防火墙设置：确认8080端口未被阻断\",\n    \"检查上游服务配置：确认监听地址和端口配置正确\",\n    \"查看上游服务日志：排查应用启动失败或崩溃原因\",\n    \"检查资源状态：确认CPU/内存/磁盘空间是否充足\",\n    \"验证服务依赖：检查数据库、中间件等依赖服务是否正常\"\n  ],\n  \"solution\": {\n    \"immediate\": \"1. 重启上游服务尝试恢复 2. 临时调整Nginx配置将流量切换到备用节点 3. 检查并释放系统资源\",\n    \"long_term\": \"1. 实施健康检查机制自动剔除故障节点 2. 部署服务监控和告警系统 3. 建立负载均衡和高可用架构 4. 完善日志记录和错误追踪\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:35:23.113736"
+  }
+}

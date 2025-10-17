@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:39:03.459526",
+  "raw_log_context": "2025/10/14 17:12:03 [error] 40#40: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:04 [error] 35#35: *24 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:12:09 [error] 35#35: *29 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"DELETE /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:09 [error] 35#35: *32 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接上游服务器192.168.250.7:8080，导致所有API请求失败\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查上游服务器192.168.250.7:8080的网络连通性（防火墙、路由）\",\n    \"验证上游服务进程状态（是否崩溃或未启动）\",\n    \"检查Nginx upstream配置是否正确\",\n    \"确认上游服务器端口监听状态（netstat/ss -tlnp）\",\n    \"排查上游服务器资源情况（CPU、内存、磁盘空间）\",\n    \"检查应用日志（如存在）是否有相关错误\"\n  ],\n  \"solution\": {\n    \"immediate\": \"1. 重启上游服务进程 2. 临时调整Nginx配置将流量切换到备用节点（如有） 3. 检查并修复网络连通性问题\",\n    \"long_term\": \"1. 实施健康检查机制 2. 部署负载均衡和高可用架构 3. 完善监控告警系统 4. 建立服务自愈机制\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:39:03.459512"
+  }
+}

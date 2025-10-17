@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-10-17T09:37:12.253514",
+  "raw_log_context": "2025/10/14 17:11:58 [error] 36#36: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"\n2025/10/14 17:12:02 [error] 38#38: *12 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 39#39: *15 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 40#40: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"",
+  "analysis": {
+    "summary": "AI 分析失败",
+    "severity": "未知",
+    "diagnosis_path": [
+      "解析失败，请查看原始输出"
+    ],
+    "solution": {
+      "immediate": "人工介入",
+      "long_term": "检查 LLM 输出格式"
+    },
+    "raw_llm_output": "```json\n{\n  \"summary\": \"Nginx代理无法连接到后端服务192.168.250.7:8080，导致所有API请求失败\",\n  \"severity\": \"高\",\n  \"diagnosis_path\": [\n    \"检查后端服务状态：确认192.168.250.7:8080的服务进程是否正常运行\",\n    \"网络连通性测试：使用telnet或nc验证从Nginx容器到后端服务的网络连通性\",\n    \"防火墙规则检查：确认是否存在防火墙阻断192.168.250.7:8080端口的访问\",\n    \"服务配置验证：检查Nginx upstream配置和后端服务监听地址配置\",\n    \"资源监控：检查后端服务的CPU/内存使用情况，确认是否因资源不足导致进程终止\",\n    \"日志分析：查看后端服务应用日志和系统日志获取更详细的错误信息\"\n  ],\n  \"solution\": {\n    \"immediate\": \"1. 重启后端服务进程 2. 临时调整Nginx配置将流量切换到备用节点（如有）3. 检查并解除可能的防火墙阻断\",\n    \"long_term\": \"1. 实施服务健康检查机制 2. 部署负载均衡和高可用架构 3. 配置监控告警系统 4. 完善日志记录和追踪机制\"\n  }\n}\n```",
+    "timestamp": "2025-10-17T09:37:12.253502"
+  }
+}

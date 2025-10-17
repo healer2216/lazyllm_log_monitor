@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-10-17T10:00:41.016727",
+  "raw_log_context": "2025/10/14 17:12:02 [error] 38#38: *12 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/i18n/lina/?lang=zh-hans&flat=0 HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/i18n/lina/?lang=zh-hans&flat=0\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 39#39: *15 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/authentication/user-session/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/authentication/user-session/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:03 [error] 40#40: *18 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/v1/settings/public/open/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/v1/settings/public/open/\", host: \"192.168.1.72\", referrer: \"http://192.168.1.72/ui/\"\n2025/10/14 17:12:04 [error] 35#35: *24 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: , request: \"GET /api/health/ HTTP/1.1\", upstream: \"http://192.168.250.7:8080/api/health/\", host: \"localhost:51980\"",
+  "analysis": {
+    "summary": "上游服务192.168.250.7:8080连接被拒绝，导致API请求失败",
+    "severity": "高",
+    "diagnosis_path": [
+      "检查上游服务状态（是否运行、端口监听）",
+      "验证网络连通性（防火墙规则、路由配置）",
+      "检查负载均衡/服务发现配置",
+      "确认上游服务资源使用情况（CPU/内存/文件描述符）"
+    ],
+    "solution": {
+      "immediate": "重启上游服务并验证监听端口，临时调整Nginx超时设置防止请求堆积",
+      "long_term": "实施服务健康检查机制，完善监控告警，优化服务高可用架构（如集群部署）"
+    },
+    "timestamp": "2025-10-17T10:00:41.016711"
+  }
+}
