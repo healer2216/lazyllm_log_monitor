@@ -13,8 +13,8 @@ email:
   enable: true
   smtp_server: "smtp.qq.com"
   port: 465
-  username: "2609789588@qq.com"
-  password: "vybxzmctrnxaebed"  # 推荐使用应用专用密码
+  username: "12345678@qq.com"
+  password: "XXXXXXXXXX"  # 推荐使用应用专用密码
   recipients:
     - "256006102023@hainanu.edu.cn"
   sender_name: "LogMonitor AI"
